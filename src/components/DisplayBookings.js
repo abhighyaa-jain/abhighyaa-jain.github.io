@@ -11,7 +11,7 @@ class DisplayBookings extends React.Component {
             <AllBookings allBookings={this.props.bookings} getBookingData={this.props.getBookingData}/>
           )
         ) : (
-          <div>No bookings</div>
+          <div>Loading all bookings</div>
         )}
       </div>
     );

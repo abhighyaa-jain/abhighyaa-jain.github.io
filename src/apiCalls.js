@@ -75,7 +75,7 @@ export function getAllBookings() {
         rejected: rejected
       };
       resolve(allBookings);
-    }, 0);
+    }, 100);
   });
 }
 export function getBookingDetails(id) {

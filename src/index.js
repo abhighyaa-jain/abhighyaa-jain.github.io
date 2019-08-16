@@ -12,14 +12,16 @@ class Routing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allBookings: []
+      allBookings: [],
+      isLoaded:false,
     };
     this.getBookingData=this.getBookingData.bind(this);
   }
   getBookingData(){
     getAllBookings().then(allBookings => {
       this.setState({
-        allBookings: allBookings
+        allBookings: allBookings,
+        isLoaded:true,
       });
     });
   }

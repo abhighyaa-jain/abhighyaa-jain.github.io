@@ -1,10 +1,9 @@
 import React from "react";
 import Booking from "./Booking";
-import Table from "react-bootstrap/Table";
 import BookingsTableDetails from "../configs/BookingsTableDetails";
 const AllBookings = (props) => {
   return (
-    <Table responsive hover>
+    <table responsive hover>
       <thead>
         <tr>
           {BookingsTableDetails.map(field => {
@@ -17,7 +16,7 @@ const AllBookings = (props) => {
           return <Booking key={booking.booking_id} booking={booking} getBookingData={props.getBookingData}/>;
         })}
       </tbody>
-    </Table>
+    </table>
   );
 };
 

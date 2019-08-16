@@ -47,8 +47,12 @@ html,body,.main{
 .status{
   padding:15px;
 }
-Table{
-  margin-top:7px;
+table{
+  margin-top:35px;
+  width:100%;
+}
+td,th{
+padding:1%;
 }
 /* .body{
   border:1px solid;

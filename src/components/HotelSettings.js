@@ -1,12 +1,12 @@
 import React from "react";
-import Table from "react-bootstrap/Table";
+
 import { deleteField, addNewField, getHotelDetails } from "../apiCalls";
 import Header from "./Header";
 import { HotelDetails, AskToUser } from "../configs/HotelDetails";
 class HotelSettings extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { fieldType: "", hotelDetails: {} };
+    this.state = { fieldType: "", hotelDetails: {},isLoaded:false };
     this.fieldTypeRef = React.createRef();
     this.fieldTitleRef = React.createRef();
     this.fieldIsMandatoryRef = React.createRef();
@@ -16,7 +16,7 @@ class HotelSettings extends React.Component {
   }
   loadHotelData() {
     getHotelDetails().then(hotelDetails => {
-      this.setState({ hotelDetails: hotelDetails });
+      this.setState({ hotelDetails: hotelDetails,isLoaded:true });
     });
   }
   componentDidMount() {
@@ -64,11 +64,14 @@ class HotelSettings extends React.Component {
         });
       }
     };
-    return (
+    if(!this.state.isLoaded){
+      return <div>Loading....</div>
+    }
+    else return (
       <div className="main">
         <Header />
         <h2>About Hotel: </h2>
-        <Table responsive borderless>
+        <table responsive borderless>
           <tbody>
             {HotelDetails.map(field => {
               if (this.state.hotelDetails.hotel_details != undefined)
@@ -80,10 +83,10 @@ class HotelSettings extends React.Component {
                 );
             })}
           </tbody>
-        </Table>
+        </table>
 
         <h2>Details to be asked for check in :</h2>
-        <Table responsive borderless>
+        <table responsive borderless>
           <thead>
             <tr>
               {AskToUser.map(field => {
@@ -163,7 +166,7 @@ class HotelSettings extends React.Component {
               </td>
             </tr>
           </tbody>
-        </Table>
+        </table>
       </div>
     );
   }

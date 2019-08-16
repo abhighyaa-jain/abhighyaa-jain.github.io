@@ -29,7 +29,7 @@ class Booking extends React.Component {
         {BookingTableDetails.map(field => {
           if (field.key === "booking_id") {
             return (
-              <td>
+              <td key={this.props.booking[field.key]}>
                 <a href="#" onClick={this.handleShow}>
                   {this.props.booking[field.key]}
                 </a>
