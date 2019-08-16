@@ -1,9 +1,9 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { getBookingDetails, approveBooking } from "../apiCalls";
-import BookingTableDetails from "../configs/BookingsTableDetails";
-import { BookingDetails, GuestDetails } from "../configs/BookingDetails";
+import { getBookingDetails, approveBooking } from "../../../apiCalls";
+import BookingTableDetails from "../../../configs/BookingsTableDetails";
+import { BookingDetails, GuestDetails } from "../../../configs/BookingDetails";
 class Booking extends React.Component {
   constructor(props) {
     super(props);
@@ -91,7 +91,7 @@ class Booking extends React.Component {
                     <Button variant="secondary" onClick={this.handleClose}>
                       Close
                     </Button>
-                    <Button
+                    {this.props.booking.status==="pending"?(<Button
                       variant="success"
                       onClick={e =>
                         approveBooking(this.props.booking.booking_id).then(
@@ -104,7 +104,7 @@ class Booking extends React.Component {
                       }
                     >
                       Approve
-                    </Button>
+                    </Button>):(null)}
                   </Modal.Footer>
                 </Modal>
               </td>

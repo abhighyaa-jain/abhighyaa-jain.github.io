@@ -1,3 +1,5 @@
+import { post, get } from "./APILayer";
+
 export function addNewField(type, title, is_mandatory) {
   var body = {
     is_new_field: true,
@@ -5,7 +7,9 @@ export function addNewField(type, title, is_mandatory) {
     type: type,
     is_mandatory: is_mandatory
   };
-
+  // post("/admin/add_field/", body).then(response => {
+  //   return response.message;
+  // });
   return new Promise(function(resolve, reject) {
     setTimeout(function() {
       var response = {
@@ -18,7 +22,10 @@ export function addNewField(type, title, is_mandatory) {
 }
 export function deleteField(id) {
   //post api call
-  return new Promise(function(resolve, reject) {
+  // post('/admin/delete_field/' , id).then(response => {
+  // return response.message;
+  // })
+  return new Promise(function(resolve) {
     setTimeout(function() {
       var response = {
         success: true,
@@ -29,6 +36,24 @@ export function deleteField(id) {
   });
 }
 export function getAllBookings() {
+  // get("/admin/get_check_in_details/").then(response => {
+  //   var allBookings = [];
+  //   var pending = [],
+  //     approved = [],
+  //     rejected = [];
+  //     var result=response.data;
+  //   for (var key in result) {
+  //     if (result[key]["status"] === "pending") pending.push(result[key]);
+  //     if (result[key]["status"] === "approved") approved.push(result[key]);
+  //     if (result[key]["status"] === "rejected") rejected.push(result[key]);
+  //   }
+  //   allBookings = {
+  //     pending: pending,
+  //     approved: approved,
+  //     rejected: rejected
+  //   };
+  //   return allBookings;
+  // });
   return new Promise(function(resolve, reject) {
     setTimeout(function() {
       var result = [
@@ -80,17 +105,12 @@ export function getAllBookings() {
 }
 export function getBookingDetails(id) {
   // var url= "/admin/get_form_booking_details/"+id;
-  // fetch(url)
-  //   .then(res => res.json())
-  //   .then(
-  //     result => {},
-  //     error => {
-  //       return error;
-  //     }
-  //   );
-  
-    return new Promise(function(resolve, reject) {
-     setTimeout(function() {
+  //  get(url).then(response=>{
+  //    return response.data;
+  //  })
+
+  return new Promise(function(resolve, reject) {
+    setTimeout(function() {
       var result = {
         success: true,
         message: "",
@@ -131,15 +151,15 @@ export function getBookingDetails(id) {
           }
         }
       };
-resolve(result.data)    
-   }, 100);
-   } )
-   
-  
-  
+      resolve(result.data);
+    }, 100);
+  });
 }
 
 export function getHotelDetails() {
+  // get(' /admin/get_hotel_details/').then(response=>{
+  //   return response.data
+  // })
   return new Promise(function(resolve, reject) {
     setTimeout(function() {
       var result = {
@@ -187,9 +207,9 @@ export function getHotelDetails() {
   });
 }
 export function uploadFile(file) {
+  // post("/admin/upload_csv_data/",{"csv_file": file}).then(response=>{return response.message});
   return new Promise(function(resolve, reject) {
     setTimeout(function() {
-      //check if file actually uploaded and call getAllBookings again
       console.log(file);
       resolve("okay");
     }, 100);
@@ -197,6 +217,7 @@ export function uploadFile(file) {
 }
 
 export function approveBooking(id) {
+  // post("/admin/approve_check_in/", { booking_id: id }).then(response=>{return response.message});
   return new Promise(function(resolve, reject) {
     setTimeout(function() {
       var response = {

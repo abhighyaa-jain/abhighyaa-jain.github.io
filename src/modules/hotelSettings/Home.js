@@ -1,8 +1,8 @@
 import React from "react";
+import { deleteField, addNewField, getHotelDetails } from "../../apiCalls";
+import Header from "../../components/Header";
+import { HotelDetails, AskToUser } from "../../configs/HotelDetails";
 
-import { deleteField, addNewField, getHotelDetails } from "../apiCalls";
-import Header from "./Header";
-import { HotelDetails, AskToUser } from "../configs/HotelDetails";
 class HotelSettings extends React.Component {
   constructor(props) {
     super(props);

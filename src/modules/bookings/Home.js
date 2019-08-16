@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Header from "./components/Header";
+import Header from "../../components/Header";
 import DisplayBookings from "./components/DisplayBookings";
-import Status from "./configs/status";
-import {uploadFile} from "./apiCalls";
+import Status from "../../configs/status";
+import {uploadFile} from "../../apiCalls";
 class Home extends React.Component {
   render() {
     return (
@@ -28,7 +28,7 @@ class Home extends React.Component {
           {/* {console.log("props bookings "+JSON.stringify(this.props.bookings))} */}
           <DisplayBookings
             category={this.props.category}
-            bookings={this.props.bookings}
+            allBookings={this.props.bookings}
             getBookingData={this.props.getBookingData}
           />
         </div>

@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import HotelSettings from "./components/HotelSettings";
+import HotelSettings from "./modules/hotelSettings/Home";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
-import Home from "./Home";
+import Home from "./modules/bookings/Home";
 import { getAllBookings } from "./apiCalls";
 import Status from "./configs/status";
 
@@ -13,15 +13,15 @@ class Routing extends React.Component {
     super(props);
     this.state = {
       allBookings: [],
-      isLoaded:false,
+      isLoaded: false
     };
-    this.getBookingData=this.getBookingData.bind(this);
+    this.getBookingData = this.getBookingData.bind(this);
   }
-  getBookingData(){
+  getBookingData() {
     getAllBookings().then(allBookings => {
       this.setState({
         allBookings: allBookings,
-        isLoaded:true,
+        isLoaded: true
       });
     });
   }
@@ -49,7 +49,7 @@ class Routing extends React.Component {
               />
             );
           })}
-
+          <Route exact path="/" component={HotelSettings} />
           <Route exact path="/hotel-settings" component={HotelSettings} />
         </div>
       </Router>
