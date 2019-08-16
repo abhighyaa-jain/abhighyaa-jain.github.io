@@ -5,9 +5,53 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+html,body,.main{
+  height:100%;
+}
+
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+}
+.fileUpload input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  font-size: 400px;
+}
+.navBar{
+  width:100%;
+  padding: 15px;
+  padding-bottom: 0px
+}
+
+.nav-links{
+  float: right;
+  padding: 14px 16px;
+}
+
+.logo{
+  display: inline-block;
+}
+
+.status{
+  padding:15px;
+}
+Table{
+  margin-top:7px;
+}
+/* .body{
+  border:1px solid;
+  width:100%;
+  height:100%;  
+} */
