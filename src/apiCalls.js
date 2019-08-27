@@ -1,4 +1,5 @@
 import { post, get } from "./APILayer";
+import Status from "./configs/status";
 
 export function addNewField(type, title, is_mandatory) {
   var body = {
@@ -60,7 +61,7 @@ export function getAllBookings() {
         {
           id: "12",
           booking_id: "dfjsg-df-sdf-sdf",
-          status: "pending",
+          status: "none",
           expected_check_in: "2019-03-02",
           expected_check_out: "2019-03-05",
           occupancy: 3,
@@ -85,20 +86,30 @@ export function getAllBookings() {
         }
       ];
 
-      var allBookings = [];
+      var allBookings = {};
       var pending = [],
         approved = [],
         rejected = [];
-      for (var key in result) {
-        if (result[key]["status"] === "pending") pending.push(result[key]);
-        if (result[key]["status"] === "approved") approved.push(result[key]);
-        if (result[key]["status"] === "rejected") rejected.push(result[key]);
+      for(var s in Status){
+        allBookings[Status[s].value] = []
       }
-      allBookings = {
-        pending: pending,
-        approved: approved,
-        rejected: rejected
-      };
+      for (var key in result) {
+        for(var s in Status){
+          // console.log(Status[s].name)
+          if (result[key]["status"] === Status[s].value) {var stat=Status[s].value;
+            allBookings[stat].push(result[key]);
+          }
+        }
+        // if (result[key]["status"] === "pending") pending.push(result[key]);
+        // if (result[key]["status"] === "approved") allBookings["approved"].push(result[key]);
+        // if (result[key]["status"] === "rejected") rejected.push(result[key]);
+      }
+      // allBookings = {
+      //   pending: pending,
+      //   approved: approved,
+      //   rejected: rejected
+      // };
+      // console.log(allBookings)
       resolve(allBookings);
     }, 100);
   });
